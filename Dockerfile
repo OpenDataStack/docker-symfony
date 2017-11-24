@@ -5,10 +5,11 @@ MAINTAINER Willie Seabrook<willie@angrycactus.io>
 ENV DEBIAN_FRONTEND noninteractive
 
 # Basic Requirements
-RUN apt-get update \
-  && apt-get -y install nano \
-  && apt-get -y install php-fpm php-mbstring php-xml \
-  && apt-get -y install nginx supervisor
+RUN apt-get update && apt-get -y install \
+  nano \
+  php-fpm php-xml php-mbstring php-bcmath \
+  nginx \
+  supervisor
 
 # Nginx
 COPY ./config/nginx/default.conf /etc/nginx/sites-available/default

@@ -20,19 +20,19 @@ solve permission issues if you are mounting a directory from your host
 Pull from docker hub and run:
 
 ```
-docker pull
-
+docker pull opendatastack/docker-symfony
 docker run \
 -e "WWW_UID=1000" \
 -e "WWW_GID=1000" \
+-e "APP_ELASTIC_SERVER_HOST=http://anotherurl:9400" \
 -p 80:80 \
 -v /PATH/TO/YOUR/SYMFONY/APP:/var/www/project/ \
---name docker-symfony docker-symfony:latest;
+--name docker-symfony opendatastack/docker-symfony;
 ```
 
 ## Development & Test Cycle
 
-Download: ```git clone git@github.com:angrycactus/docker-symfony.git && cd docker-symfony```
+Download: ```git clone git@github.com:OpenDataStack/docker-symfony.git && cd docker-symfony```
 
 Change:
 
@@ -42,6 +42,7 @@ docker build -t docker-symfony .;
 docker run \
 -e "WWW_UID=1000" \
 -e "WWW_GID=1000" \
+-e "APP_ELASTIC_SERVER_HOST=http://anotherurl:9400" \
 -p 80:80 \
 -v /PATH/TO/YOUR/SYMFONY/APP:/var/www/project/ \
 --name docker-symfony docker-symfony:latest;
@@ -60,11 +61,11 @@ docker push opendatastack/docker-symfony
 Login:
 
 ```
-docker exec -it symfony /bin/bash
+docker exec -it docker-symfony /bin/bash
 ```
 
 Copy files from the container:
 
 ```
-docker cp symfony:/etc/php/7.0/fpm/php.ini /PATH/TO/FILE
+docker cp docker-symfony:/etc/php/7.0/fpm/php.ini /PATH/TO/FILE
 ```
