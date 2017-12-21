@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Basic Requirements
 RUN apt-get update && apt-get -y install \
   nano \
-  php-fpm php-xml php-mbstring php-bcmath \
+  php-fpm php-xml php-curl php-mbstring php-bcmath \
   nginx \
   supervisor
 
